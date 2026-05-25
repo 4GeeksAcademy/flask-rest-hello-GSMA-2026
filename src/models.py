@@ -19,6 +19,8 @@ class User(db.Model):
 
 class Post(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
+    image_url: Mapped[str] = mapped_column(String(300),nullable=True)
+    video_url: Mapped[str] = mapped_column(String(300),nullable=True)
     user_id : Mapped[int] = mapped_column(ForeignKey('user.id'))
     created_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc))
     updated_at: Mapped[datetime] = mapped_column(default=lambda: datetime.now(timezone.utc),onupdate=lambda: datetime.now(timezone.utc))
